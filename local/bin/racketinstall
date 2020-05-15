@@ -1,0 +1,21 @@
+#!/bin/zsh
+if [ -z "1" ]
+then
+	echo "Usage: racketinstall <git tag>"
+	exit 1
+fi
+
+SOURCE="$PREFIX/source/racket"
+
+if [ -d "$SOURCE" ]
+then
+	cd "$SOURCE"
+	git fetch origin
+else
+	git clone https://github.com/plt/racket "$SOURCE"
+	cd "$SOURCE"
+fi
+
+git checkout "$1"
+
+make unix-style PREFIX=$PREFIX
