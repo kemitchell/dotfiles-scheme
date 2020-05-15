@@ -1,3 +1,3 @@
 #!/bin/bash
 sudo apt-get update
-sudo apt-get install mit-scheme racket chezscheme chicken-bin gambc scm
+sudo apt-get install -y mit-scheme racket chezscheme chicken-bin gambc scm
