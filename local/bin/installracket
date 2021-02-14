@@ -1,14 +1,13 @@
-#!/bin/zsh
-if [ -z "1" ]
-then
+#!/bin/sh
+set -e
+if [ -z "$1" ]; then
 	echo "Usage: racketinstall <git tag>"
 	exit 1
 fi
 
 SOURCE="$PREFIX/source/racket"
 
-if [ -d "$SOURCE" ]
-then
+if [ -d "$SOURCE" ]; then
 	cd "$SOURCE"
 	git fetch origin
 else
@@ -16,6 +15,7 @@ else
 	cd "$SOURCE"
 fi
 
-git checkout "$1"
+git checkout --force "$1"
 
-make unix-style PREFIX=$PREFIX
+make clean
+make unix-style PREFIX="$PREFIX"
